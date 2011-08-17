@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
+<!-- above set at the top of the file will set     -->
+<!-- the browser's rendering engine into           -->
+<!-- "Quirks Mode". Replacing this declaration     -->
+<!-- with a "Standards Mode" doctype is supported, -->
+<!-- but may lead to some differences in layout.   -->
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Test Cloudspokes Authentication Component</title>
+  </head>
+
+  <body>
+	  <div style="margin-left:35%">
+	  	<h1>Test Authentication Service</h1>
+	  	<p><input type="text" id="username" value="username"></input></p>
+	    <p><input type="password" id="password" value="password"></input></p>
+	    <p><input type="password" id="securityToken" value="securitytoken"></input></p>
+	    <p><button onclick="login()">Login</button></p>
+	    <textarea id="response" rows=10 cols=50></textarea>
+	  </div>
+  </body>
+  <script>
+  	var xmlhttp;
+  	
+  	function login() {
+  		var username = document.getElementById("username").value;
+  		var password = document.getElementById("password").value;
+  		var securityToken = document.getElementById("securityToken").value;
+  		
+  		var data = "username=" + username
+  					+ "&password=" + (password + securityToken);
+  		
+  		var xmlhttpreq = getXMLHttp();
+  		xmlhttpreq.open('POST', '/authenticate', true);
+  		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  		xmlhttpreq.onreadystatechange = function(response) {
+  			if (xmlhttp.readyState == 4 && xmlhttp.status==200) {
+  				document.getElementById("response").value = xmlhttp.responseText;
+  			}
+  		};
+  		xmlhttpreq.send(data);  		
+  	}
+  	
+  	function getXMLHttp() {
+  		if (!xmlhttp) {
+  			xmlhttp = new XMLHttpRequest();
+  		}
+  		return xmlhttp;
+  	}
+  </script>
+</html>
