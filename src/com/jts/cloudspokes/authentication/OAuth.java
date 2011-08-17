@@ -1,5 +1,11 @@
 package com.jts.cloudspokes.authentication;
 
+/**
+ * OAuth Constants 
+ * @author sinduja
+ *
+ */
+
 public class OAuth {
 	
 	public static final String GRANT_TYPE = "grant_type";

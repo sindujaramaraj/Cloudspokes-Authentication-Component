@@ -15,6 +15,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.junit.Test;
 
+/**
+ * Test https://cloudspokes-sf-authentication.appspot.com/ 
+ * @author sinduja
+ *
+ */
+
 public class TestAuthenticationService {
 	
 	private String username = "sinduja";
